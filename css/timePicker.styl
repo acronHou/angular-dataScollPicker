@@ -1,0 +1,67 @@
+@import "some base css";
+.opa
+  position:fixed
+  left:0
+  right:0
+  top:0
+  bottom:0
+  background:rgba(45,50,56,0.85)
+  z-index:100
+  .date-picker
+      width:100%
+      height: l(284)
+      background:#fdfdfd
+      overflow:hidden  
+      position:absolute
+      z-index:200
+      bottom:0
+      .btn-wrapper
+        width:100%
+        height:l(51)
+        border-bottom:l(1)  solid #e2e4e5
+        margin-bottom:l(12)
+        line-height:l(51)
+        text-align:center
+        fz(16)
+        .close
+          width:l(51)
+          height:l(51)
+          position:absolute
+          left:0
+          right:0
+          svg
+            width:l(12.75)
+            height:l(12.75)
+        .yes
+          width:l(58)
+          height:l(30)
+          text-align:center
+          line-height:l(30)
+          background:#FF9800 
+          border-radius:l(3)
+          fz(14)
+          color:colorWhiteL1
+          position:absolute
+          top:l(11)
+          right:l(16)
+      .border
+        width:100%
+        height:0
+        border-top:l(1) solid colorB4
+        position:absolute
+        top:l(146)
+        &.border2
+          top:l(186)     
+      .con
+        height:100%
+        width:33.33%
+        float:left
+        position:relative
+        text-align:center
+        .wslot-item 
+          fz(18)
+          color:#E2E4E5 
+        .wslot-item-selected
+          fz(20)
+          color:#2D3238  
+          font-weight:500   

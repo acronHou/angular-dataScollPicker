@@ -1,0 +1,21 @@
+<meta charset="utf-8"> 
+<link rel="stylesheet" type="text/css" href="../timePicker.styl?__inline">
+
+<div class="opa"
+     ng-show="show" 
+     ng-click="close()">
+    <div class="date-picker clearfix" ng-show="show">
+        <div class="btn-wrapper">
+            <div class="close" ng-click="close()">
+                <svg><use xlink:href="#close"></use></svg>
+            </div>
+            请选择出生日期
+            <div class="yes" ng-click="makeSure()">选好了</div> 
+        </div>
+        <div class="con year"></div>
+        <div class="con month"></div>
+        <div class="con day"></div>
+        <div class="border"></div>
+        <div class="border border2"></div>
+    </div>
+</div>
