@@ -9,7 +9,7 @@ angular.module('myApp.directives')
             }, 
             restrict: 'AE', 
             replace: false,
-            templateUrl: __uri('./partials/w/timePicker.html'),
+            templateUrl: __uri('./partials/timePicker.html'),
             link: function($scope, iElm, iAttrs, controller) {
 
                 (function($) {
@@ -23,12 +23,10 @@ angular.module('myApp.directives')
                         }
 
                         if(options=='get'){
-                            // this.trigger('WSlot.get');
                             return this.children('div.'+class_item_selected).index();
                         }
 
                         if(options=='getText'){
-                            // this.trigger('WSlot.get');
                             return this.children('div.'+class_item_selected).text();
                         }
 
@@ -79,11 +77,9 @@ angular.module('myApp.directives')
                                 }
                                 var angle = opts.angle * ( center_index - i );
                                 var opacity = 0;
-                                // var scale = 0.95;
                                 var max_angle = opts.angle * opts.displayed_length;
                                 if(Math.abs(angle) <= max_angle) {
                                     opacity = 1 - (Math.abs(angle)/(max_angle*2));
-                                    // scale = 1 - (Math.abs(angle)/(max_angle*20));
                                 }
                                 var transform = 'transform:rotateX('+angle+'deg) translate3d(0,0,'+distance+'px);-webkit-transform:rotateX('+angle+'deg) translate3d(0,0,'+distance+'px);';
                                 item += '<div class="wslot-item '+((i==center_index)?class_item_selected:'')+'" style="'+transform+displayed+style+'opacity:'+opacity+';line-height:30px">'+opts.items[i]+'</div>';
@@ -91,7 +87,6 @@ angular.module('myApp.directives')
 
                             return this.html(item).data('cur-angle',(center_index*opts.angle))
                                 .off(start).on(start, function(e) {
-                                    //console.log('start '+getEventPos(e).y);
                                     var ini = $(this);
                                     ini.children().removeClass('wslot-item-selected');
                                     ini.addClass('w-roll-touched').data('initialtouch', getEventPos(e).y);
@@ -101,7 +96,6 @@ angular.module('myApp.directives')
                                     ini.children().removeClass('wslot-item-selected');
                                     if (ini.is('.w-roll-touched')) {
                                         var deltaY = ini.data('initialtouch') - getEventPos(e).y;
-                                        // console.log('move '+deltaY);
                                         var mainAngle = parseInt(ini.data('cur-angle')) + parseInt(deltaY/2);
 
                                         var maxAngle = (opts.items.length - 1) * opts.angle;
@@ -122,11 +116,9 @@ angular.module('myApp.directives')
                                                 options['display'] = 'none';
                                             }
                                             var opacity = 0;
-                                            // var scale = 0.95;
                                             var max_angle = opts.angle * opts.displayed_length;
                                             if(Math.abs(currAngle) <= max_angle) {
                                                 opacity = 1 - (Math.abs(currAngle)/(max_angle*2));
-                                                // scale = 1 - (Math.abs(currAngle)/(max_angle*20));
                                             }
                                             options[xform] = 'rotateX('+currAngle+'deg) translateZ('+distance+'px)';
                                             options['opacity'] = opacity;
@@ -136,7 +128,6 @@ angular.module('myApp.directives')
                                     return false;
                                 }).off(end).on(end, function(e) {
                                     var ini = $(this);
-                                    //console.log('end');
                                     if (ini.is('.w-roll-touched')) {
                                         var deltaY = ini.data('initialtouch') - getEventPos(e).y;
 
@@ -187,11 +178,9 @@ angular.module('myApp.directives')
                                         options['display'] = 'none';
                                     }
                                     var opacity = 0;
-                                    // var scale = 0.95;
                                     var max_angle = opts.angle * opts.displayed_length;
                                     if(Math.abs(currAngle) <= max_angle) {
                                         opacity = 1 - (Math.abs(currAngle)/(max_angle*2));
-                                        // scale = 1 - (Math.abs(currAngle)/(max_angle*20));
                                     }
                                     options[xform] = 'rotateX('+currAngle+'deg) translateZ('+distance+'px)';
                                     options['opacity'] = opacity;
@@ -207,11 +196,9 @@ angular.module('myApp.directives')
                                         options['display'] = 'none';
                                     }
                                     var opacity = 0;
-                                    // var scale = 0.95;
                                     var max_angle = opts.angle * opts.displayed_length;
                                     if(Math.abs(currAngle) <= max_angle) {
                                         opacity = 1 - (Math.abs(currAngle)/(max_angle*2));
-                                        // scale = 1 - (Math.abs(currAngle)/(max_angle*20));
                                     }
                                     options[xform] = 'rotateX('+currAngle+'deg) translateZ('+distance+'px)';
                                     options['opacity'] = opacity;
@@ -275,27 +262,23 @@ angular.module('myApp.directives')
                     function getEventPos(e) {
                         //jquery event
                         if (e.originalEvent) {
-                            // touch event
                             if (e.originalEvent.changedTouches && (e.originalEvent.changedTouches.length >= 1)) {
                                 return {
                                     x: e.originalEvent.changedTouches[0].pageX,
                                     y: e.originalEvent.changedTouches[0].pageY
                                 };
                             }
-                            // mouse event
                             return {
                                 x: e.originalEvent.clientX,
                                 y: e.originalEvent.clientY
                             };
                         } else {
-                            // touch event
                             if (e.changedTouches && (e.changedTouches.length >= 1)) {
                                 return {
                                     x: e.changedTouches[0].pageX,
                                     y: e.changedTouches[0].pageY
                                 };
                             }
-                            // mouse event
                             return {
                                 x: e.clientX,
                                 y: e.clientY
@@ -323,7 +306,6 @@ angular.module('myApp.directives')
                     displayed_length:2,
                     rotation:0
                 }).on('WSlot.change',function(e,index){
-                    // console.log(index);
                     initDate(index,parseInt($('.year').WSlot('getText')),$('.day').WSlot('get'));
                     updateText();
                 });
@@ -377,7 +359,6 @@ angular.module('myApp.directives')
                         displayed_length:2,
                         rotation:0
                     }).off('WSlot.change').on('WSlot.change',function(e,index){
-                        // console.log(index);
                         updateText();
                     });
                 }
